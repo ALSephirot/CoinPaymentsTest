@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "module": "es2015",
+    "types": []
+  },
+  "exclude": [
+    "src/test.ts",
+    "**/*.spec.ts",
+    "../node_modules/coin-payments-lib/**/*.spec.ts"
+  ],
+  "include": ["**/*.ts", "../node_modules/coin-payments-lib/*/**.ts", "../node_modules/coin-payments-lib/**.ts", "../node_modules/coin-payments-lib/*/*/**.ts"]
+}

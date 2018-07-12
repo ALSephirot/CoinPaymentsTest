@@ -1,0 +1,115 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+        Welcome to {{ title }}!
+    </h1>
+</div>
+<h2>Crear Transacción: </h2>
+<div>
+    <form [formGroup]="CreateTransactionForm">
+        <table>
+            <tr>
+                <table>
+                    <tr>
+                        <label for="amount">Monto: </label>
+                    </tr>
+                    <tr>
+                        <input formControlName="amount" type="number" [(ngModel)]="transaction.amount">
+                    </tr>
+                    <tr>
+                        <div *ngIf="!CreateTransactionForm.controls.amount.valid">
+                            <label style="color:red;">*Requerido</label>
+                        </div>
+                    </tr>
+                </table>
+            </tr>
+            <tr>
+                <table>
+                    <tr>
+                        <label for="currency1">Moneda Origen: </label>
+                    </tr>
+                    <tr>
+                        <input formControlName="currency1" type="text" [(ngModel)]="transaction.currency1">
+                    </tr>
+                    <tr>
+                        <div *ngIf="!CreateTransactionForm.controls.currency1.valid">
+                            <label style="color:red;">*Requerido</label>
+                        </div>
+                    </tr>
+                </table>
+            </tr>
+            <tr>
+                <table>
+                    <tr>
+                        <label for="currency2">Moneda Destino: </label>
+                    </tr>
+                    <tr>
+                        <input formControlName="currency2" type="text" [(ngModel)]="transaction.currency2">
+                    </tr>
+                    <tr>
+                        <div *ngIf="!CreateTransactionForm.controls.currency2.valid">
+                            <label style="color:red;">*Requerido</label>
+                        </div>
+                    </tr>
+                </table>
+            </tr>
+            <tr>
+                <table>
+                    <tr>
+                        <label for="buyer_name">Nombre Comprador: </label>
+                    </tr>
+                    <tr>
+                        <input formControlName="buyer_name" type="text" [(ngModel)]="transaction.buyer_name">
+                    </tr>
+                    <tr>
+                        <div *ngIf="!CreateTransactionForm.controls.buyer_name.valid">
+                            <label style="color:red;">*Requerido</label>
+                        </div>
+                    </tr>
+                </table>
+            </tr>
+            <tr>
+                <table>
+                    <tr>
+                        <label for="buyer_email">Email Comprador:</label>
+                    </tr>
+                    <tr>
+                        <input formControlName="buyer_email" type="text" [(ngModel)]="transaction.buyer_email">
+                    </tr>
+                    <tr>
+                        <div *ngIf="!CreateTransactionForm.controls.buyer_email.valid">
+                            <label style="color:red;">*Requerido</label>
+                        </div>
+                    </tr>
+                </table>
+            </tr>
+            <tr>
+                <button (click)="save()">Comprar</button>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<h2>Transacciones Creadas: </h2>
+<div>
+    <table>
+        <tr>
+            <th>Monto Origen</th>
+            <th>Monto Destino</th>
+            <th>Moneda Destino</th>
+            <th>Wallet para Pago</th>
+            <th>Monto Recibido</th>
+            <th>Confirmaciones</th>
+            <th>Estado</th>
+        </tr>
+        <tr *ngFor="let transaction of Transactions">
+            <td>{{transaction.result.amount}}</td>
+            <td>{{transaction.result.amountf}}</td>
+            <td>{{transaction.result.coin}}</td>
+            <td>{{transaction.result.payment_address}}</td>
+            <td>{{transaction.result.received}}</td>
+            <td>{{transaction.result.recv_confirms}}</td>
+            <td>{{transaction.result.status_text}}</td>
+        </tr>
+    </table>
+</div>
